@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('input[type="submit"]').on('click', function(event) {
+  $('#game').on('click', function(event) {
     event.preventDefault();
     var guestName = $('#guest').val();
 

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :mashes
   resources :premashes
 
+  get '/sign-up' => 'registrations#new', as: :signup
+  post '/sign-up' => 'registrations#create'
+  get '/sign-in' => 'authentication#new', as: :signin
+  post 'sign-in' => 'authentication#create'
+  get 'sign-out' => 'authentication#destroy', as: :signout
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
