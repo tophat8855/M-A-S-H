@@ -1,6 +1,9 @@
 class MashesController < ApplicationController
+  def home
+    @mash = Mash.new
+  end
+
   def index
-    @mash = Mash.new #similar to below, but mashes.all
     @mashes = current_user.mashes.all
   end
 

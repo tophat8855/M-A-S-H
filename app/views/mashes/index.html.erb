@@ -1,29 +1,15 @@
-<h1>M A S H</h1>
+<h1>All my mash games</h1>
 
+<% @mashes.each do |game| %>
 <p>
-  Mansion Apartment Shack House
+  NEW GAME!
+  <%= game.guest %>
+  <%= game.home %>
+  <%= game.spouse %>
+  <%= game.kids %>
+  <%= game.vehicle %>
+  <%= game.created_at %>
+  <i class="remove circle icon"></i>
 </p>
 
-<form id="new_mash" method="post">
-  <label>Name <input type = "text" id="guest" /></label>
-
-  <h3>Who will you marry? Will it be a person you...</h3>
-  <input type = "text" id = "spouse1" placeholder = "really like">
-  <input type = "text" id = "spouse2" placeholder = "really like">
-  <input type = "text" id = "spouse3" placeholder = "think is ok">
-  <input type = "text" id = "spouse4" placeholder = "don't want to marry!">
-
-  <h3>How many kids?</h3>
-  <input type = "number" id = "kids1" placeholder = "1?">
-  <input type = "number" id = "kids2" placeholder = "2?">
-  <input type = "number" id = "kids3" placeholder = "10?">
-  <input type = "number" id = "kids4" placeholder = "more?">
-
-  <h3>What Will Your Ride Be?</h3>
-  <input type = "text" id = "vehicle1" placeholder = "bike">
-  <input type = "text" id = "vehicle2" placeholder = "hoverboard">
-  <input type = "text" id = "vehicle3" placeholder = "sports car">
-  <input type = "text" id = "vehicle4" placeholder = "golfcart">
-
-  <input type="submit" id = "game" value="Submit">
-</form>
+<% end %>

@@ -5,6 +5,20 @@ $(document).ready(function() {
   var newHome;
   var guestName;
 
+  // NEED TO DO THE DELETE THING
+  $('body').on('click', '#removeMash', function(event) {
+
+
+    event.preventDefault();
+    $.ajax({
+      url: '/mashes/', //put id here somehow
+      type: 'DELETE',
+      success: function(result) {
+
+      }
+    });
+  });
+
   $('#game').on('click', function(event) {
     event.preventDefault();
     guestName = $('#guest').val();
@@ -58,7 +72,7 @@ $(document).ready(function() {
         }
       }
     }).done(function(data) {
-      console.log(data);
+    //put code in here that removes the buttons
     });
   });
 });
