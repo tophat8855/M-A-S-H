@@ -54,10 +54,11 @@ $(document).ready(function() {
           home: newHome,
           spouse: newSpouse,
           kids: newKids,
-          vehicle: newVehicle,
+          vehicle: newVehicle
         }
       }
     }).done(function(data) {
+      console.log(data);
     });
   });
 });
