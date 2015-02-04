@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users
   resources :mashes
 
-  resources :parties
+  resources :parties do
+    resources :party_mashes
+  end
 
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'
