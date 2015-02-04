@@ -1,0 +1,18 @@
+<h1>My Parties</h1>
+
+<div id="new">
+  <h3 id = "newparty">
+    <i class="plus icon"></i>Create New Party!
+  </h3>
+</div>
+
+<div id="partylist" class="ui list">
+  <% @parties.each do |party| %>
+  <div data-id="<%= party.id %>" class="item">
+    <div class="header list">
+      <%= party.title %>
+      <i class="remove circle icon"></i>
+    </div>
+  </div>
+  <% end %>
+</div>

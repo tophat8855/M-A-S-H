@@ -5,7 +5,7 @@ $(document).ready(function() {
   var newHome;
   var guestName;
 
-  //delete thing
+  //delete mash from mashes page + from database
   $('body').on('click', '.remove', function(event) {
     var mashID = $(this).data("id");
 
@@ -19,6 +19,7 @@ $(document).ready(function() {
       });
   });
 
+  // making basic mash form
   $('#game').on('click', function(event) {
     event.preventDefault();
     guestName = $('#guest').val();
@@ -53,12 +54,14 @@ $(document).ready(function() {
 
   });
 
+  //removing buttons when doing mash again
   $('body').on('click', '#again', function(event) {
     $("#results").remove();
     $(".save").remove();
     $('#new_mash')[0].reset();
   });
 
+  //basic mash creation
   $('body').on('click', '#save', function(event){
     $.ajax('/mashes',
     {type: 'post',
@@ -68,7 +71,7 @@ $(document).ready(function() {
           home: newHome,
           spouse: newSpouse,
           kids: newKids,
-          vehicle: newVehicle
+          vehicle: newVehicle,
         }
       }
     }).done(function(data) {
@@ -77,4 +80,38 @@ $(document).ready(function() {
       $('#new_mash')[0].reset();
     });
   });
+
+  //party input creation
+  $('body').on('click', '#newparty', function(event) {
+    $('#new').append('<div class="ui left icon input">\
+    <input type="text" id="partyName" placeholder="Party Name">\
+    <i class="users icon"></i>\
+    </div><div id="saveParty" class="ui pink button">Save</div>\
+    </div>');
+  });
+
+  //party creation
+  $('body').on('click', '#saveParty', function(event) {
+    event.preventDefault();
+    var new_party_name = $('#partyName').val();
+    $.ajax("/parties",
+    {
+      type: 'post',
+      data: {
+        party: {
+          title: new_party_name,
+        }
+      }
+    }).done(function(data) {
+      $('#partyName').val('');
+      var new_party = '<div data-id="' + data.id + '" class="item">\
+      <div class="header">' + data.title + '</div>\
+      </div>';
+      $('#partylist').append(new_party);
+      $('.input').remove();
+      $('#saveParty').remove();
+
+    });
+  });
+
 });
