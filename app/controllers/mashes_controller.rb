@@ -18,6 +18,12 @@ class MashesController < ApplicationController
     end
   end
 
+  def destroy
+    @mash = Mash.find(params[:id])
+    @mash.destroy
+    render json: @mash
+  end
+
   private
   def mash_params
     params.require(:mash).permit(:home, :spouse, :kids, :vehicle, :guest)

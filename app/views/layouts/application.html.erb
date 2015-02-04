@@ -7,9 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="ui secondary  menu">
+  <nav class="ui secondary  menu">
     <% if current_user %>
 
+      <a class="item" href="/">
+        <i class="red heart icon"></i>New Mash Game
+      </a>
       <a class="item"  href="/mashes/">
         <i class="unordered list icon"></i> My Mash Games
       </a>
@@ -21,7 +24,7 @@
         <a class="ui item" href="/sign-up">Sign Up</a>
     <% end %>
       </div>
-  </div>
+  </nav>
 
   <%= yield %>
 

@@ -5,18 +5,18 @@ $(document).ready(function() {
   var newHome;
   var guestName;
 
-  // NEED TO DO THE DELETE THING
-  $('body').on('click', '#removeMash', function(event) {
-
+  //delete thing
+  $('body').on('click', '.remove', function(event) {
+    var mashID = $(this).data("id");
 
     event.preventDefault();
-    $.ajax({
-      url: '/mashes/', //put id here somehow
-      type: 'DELETE',
-      success: function(result) {
-
-      }
-    });
+    $.ajax("/mashes/" + mashID,
+      {type: "delete"}).done(function (data) {
+        var mashP = $('.remove[data-id="' + data.id + '"]').parent();
+        mashP.fadeOut('slow', function() {
+          this.remove();
+        });
+      });
   });
 
   $('#game').on('click', function(event) {
@@ -72,7 +72,9 @@ $(document).ready(function() {
         }
       }
     }).done(function(data) {
-    //put code in here that removes the buttons
+      $("#results").remove();
+      $(".save").remove();
+      $('#new_mash')[0].reset();
     });
   });
 });
