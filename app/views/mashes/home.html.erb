@@ -1,43 +1,50 @@
 <h1 class="ui red header">M A S H</h1>
-<i class="empty heart icon"></i>
-<i class="heart icon red"></i>
+<!-- <i class="empty heart icon"></i>
+<i class="heart icon red"></i> -->
 
 
 <p>
-  Mansion Apartment Shack House
+  Mansion <i class="heart icon red"></i>
+  Apartment <i class="heart icon red"></i>
+  Shack <i class="heart icon red"></i>
+  House
 </p>
 
 <form id="new_mash" method="post">
-  <label>Name <input type = "text" id="guest" /></label>
+  <div class="ui input">
+    <input type="text" id="guest" placeholder="Your name">
+  </div>
+
   <div class="ui stackable three column grid">
 
     <div class="column">
       <h3>Will you marry a person you...</h3>
-      <div><input type = "text" id = "spouse1" placeholder = "really like?"></div>
-      <div><input type = "text" id = "spouse2" placeholder = "really like?"></div>
-      <div><input type = "text" id = "spouse3" placeholder = "think is ok?"></div>
-      <div><input type = "text" id = "spouse4" placeholder = "don't want to marry?!"></div>
+      <div class="ui input focus"><input type = "text" id = "spouse1" placeholder = "really like?"></div>
+      <div class="ui input focus"><input type = "text" id = "spouse2" placeholder = "really like?"></div>
+      <div class="ui input focus"><input type = "text" id = "spouse3" placeholder = "think is ok?"></div>
+      <div class="ui input focus"><input type = "text" id = "spouse4" placeholder = "don't want to marry?!"></div>
     </div>
 
     <div class="column">
       <h3>How many kids?</h3>
-      <div><input type = "number" id = "kids1" placeholder = "1?"></div>
-      <div><input type = "number" id = "kids2" placeholder = "2?"></div>
-      <div><input type = "number" id = "kids3" placeholder = "10?"></div>
-      <div><input type = "number" id = "kids4" placeholder = "more?"></div>
+      <div class="ui input focus"><input type = "number" id = "kids1" placeholder = "1?"></div>
+      <div class="ui input focus"><input type = "number" id = "kids2" placeholder = "2?"></div>
+      <div class="ui input focus"><input type = "number" id = "kids3" placeholder = "10?"></div>
+      <div class="ui input focus"><input type = "number" id = "kids4" placeholder = "more?"></div>
     </div>
 
     <div class="column">
       <h3>What Will Your Ride Be?</h3>
-      <div><input type = "text" id = "vehicle1" placeholder = "bike"></div>
-      <div><input type = "text" id = "vehicle2" placeholder = "hoverboard"></div>
-      <div><input type = "text" id = "vehicle3" placeholder = "sports car"></div>
-      <div><input type = "text" id = "vehicle4" placeholder = "golfcart"></div>
+      <div class="ui input focus"><input type = "text" id = "vehicle1" placeholder = "bike"></div>
+      <div class="ui input focus"><input type = "text" id = "vehicle2" placeholder = "hoverboard"></div>
+      <div class="ui input focus"><input type = "text" id = "vehicle3" placeholder = "sports car"></div>
+      <div class="ui input focus"><input type = "text" id = "vehicle4" placeholder = "golfcart"></div>
     </div>
 
   </div>
 
 
+  <div id="game" class="ui pink button" type="submit">Let's go!</div>
 
-  <input type="submit" id = "game" value="Submit">
+  <!-- <input type="submit" id = "game" value="Submit"> -->
 </form>
