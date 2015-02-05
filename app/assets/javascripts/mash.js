@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
 
   // making basic mash form
-  $('#game').on('click', function(event) {
+  $('body').on('click', '#game', function(event) {
     event.preventDefault();
     guestName = $('#guest').val();
 
@@ -113,5 +113,4 @@ $(document).ready(function() {
 
     });
   });
-
 });

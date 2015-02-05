@@ -10,8 +10,7 @@
   <% @parties.each do |party| %>
   <div data-id="<%= party.id %>" class="item">
     <div class="header list">
-      <%= party.title %>
-      <i class="remove circle icon"></i>
+      <%= link_to "#{party.title}", party_path(party) %>
     </div>
   </div>
   <% end %>

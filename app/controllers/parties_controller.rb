@@ -13,6 +13,10 @@ class PartiesController < ApplicationController
     end
   end
 
+  def show
+    @party = Party.find(params[:id])
+  end
+
   private
   def party_params
     params.require(:party).permit(:title)
