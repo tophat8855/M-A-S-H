@@ -6,15 +6,9 @@ class ModelMailer < ActionMailer::Base
   #
   #   en.model_mailer.send_mash_game.subject
   #
-  def send_mash_game
-    @greeting = "Hi"
 
-    mail to: "hrfarley@gmail.com"
-  end
-
-  def send_mash_game(game)
+  def send_mash_game(game, email)
     @game = game
-    mail to: "hrfarley@gmail.com", subject: "Success! You did it."
-
+    mail to: email, subject: "Success! You did it."
   end
 end

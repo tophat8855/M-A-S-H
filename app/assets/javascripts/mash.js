@@ -67,7 +67,33 @@ $(document).ready(function() {
     $('#new_mash')[0].reset();
   });
 
-  //emailing
+  //create email input box and send button
+  $('body').on('click', '#email', function(event){
+    $('body').append('<div class="ui left icon input">\
+    <input id="emailInput" type="text" placeholder="Email...">\
+    <i class="mail icon"></i>\
+    </div> <div id="send" class="ui green button">Send</div>\
+    ');
+  });
+
+  $('body').on('click', '#send', function(event) {
+    event.preventDefault();
+    var emailAddress = $('#emailInput').val();
+    $.ajax('/mail_test',
+    {
+      type: 'post',
+      data: {
+        mash: {
+          guest: guestName,
+          home: newHome,
+          spouse: newSpouse,
+          kids: newKids,
+          vehicle: newVehicle,
+        },
+        email: emailAddress,
+      }
+    });
+  });
 
   //animation
 
@@ -94,7 +120,6 @@ $(document).ready(function() {
 
   //party input creation
   $('body').on('click', '#newparty', function(event) {
-    console.log("clickety click");
     if( $('#newPartyContainer').length === 0){
       $('#newparty').append('<div id="newPartyContainer" class="ui left icon input">\
       <input type="text" id="partyName" placeholder="Party Name">\

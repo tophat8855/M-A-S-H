@@ -25,7 +25,7 @@ class MashesController < ApplicationController
   end
 
   def mail_test
-    ModelMailer.send_mash_game(@mash).deliver
+    ModelMailer.send_mash_game(@mash, "hrfarley@gmail.com").deliver
     render text: "did it"
   end
 
