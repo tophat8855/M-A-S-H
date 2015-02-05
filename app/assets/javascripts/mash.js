@@ -4,6 +4,9 @@ $(document).ready(function() {
   var newVehicle;
   var newHome;
   var guestName;
+  var guestEmail;
+
+  var mashCreation;
 
   //delete mash from mashes page + from database
   $('body').on('click', '.remove', function(event) {
@@ -23,6 +26,7 @@ $(document).ready(function() {
   $('body').on('click', '#game', function(event) {
     event.preventDefault();
     guestName = $('#guest').val();
+    guestEmail = $('#guestEmail').val();
 
     var randHome = Math.random();
     if (randHome < 0.25) {
@@ -50,6 +54,8 @@ $(document).ready(function() {
     <div id="again" class="ui button">Start Over</div>\
     <div class="or"></div>\
     <div id="save" class="ui positive button">Save</div>\
+    <div class="or"></div>\
+    <div id="email" class="ui positive button">Email my MASH</div>\
     </div>');
 
   });
@@ -60,6 +66,10 @@ $(document).ready(function() {
     $(".save").remove();
     $('#new_mash')[0].reset();
   });
+
+  //emailing
+
+  //animation
 
   //basic mash creation
   $('body').on('click', '#save', function(event){
@@ -72,6 +82,7 @@ $(document).ready(function() {
           spouse: newSpouse,
           kids: newKids,
           vehicle: newVehicle,
+          email: guestEmail,
         }
       }
     }).done(function(data) {
@@ -83,34 +94,84 @@ $(document).ready(function() {
 
   //party input creation
   $('body').on('click', '#newparty', function(event) {
-    $('#new').append('<div class="ui left icon input">\
-    <input type="text" id="partyName" placeholder="Party Name">\
-    <i class="users icon"></i>\
-    </div><div id="saveParty" class="ui pink button">Save</div>\
-    </div>');
+    console.log("clickety click");
+    if( $('#newPartyContainer').length === 0){
+      $('#newparty').append('<div id="newPartyContainer" class="ui left icon input">\
+      <input type="text" id="partyName" placeholder="Party Name">\
+      <i class="users icon"></i>\
+      </div><div id="saveParty" class="ui pink button">Save</div>\
+      </div>');
+    }
   });
 
   //party creation
-  $('body').on('click', '#saveParty', function(event) {
-    event.preventDefault();
-    var new_party_name = $('#partyName').val();
-    $.ajax("/parties",
-    {
-      type: 'post',
-      data: {
-        party: {
-          title: new_party_name,
-        }
-      }
-    }).done(function(data) {
-      $('#partyName').val('');
-      var new_party = '<div data-id="' + data.id + '" class="item">\
-      <div class="header">' + data.title + '</div>\
-      </div>';
-      $('#partylist').append(new_party);
-      $('.input').remove();
-      $('#saveParty').remove();
+  $('body').on('click', '#saveParty', partySave);
+  $('body').on('keyup', '#partyName', function(event){
+    if(event.keyCode == 13){
+      partySave(event);
+    }
+  });
 
-    });
+  //guest MASH creation
+  $('body').on('click', '#new_guest_game', function(event) {
+    event.preventDefault();
+    console.log('clickity click');
+    $('body').append('<p>\
+    Mansion <i class="heart icon red"></i>\
+    Apartment <i class="heart icon red"></i>\
+    Shack <i class="heart icon red"></i>\
+    House </p>\
+    <form id="new_mash" method="post">\
+    <div class="ui input">\
+    <input type="text" id="guest" placeholder="Your name">\
+    <input type="email" id="guestEmail" placeholder="Email">\
+    </div>\
+    <div class="ui stackable three column grid">\
+    <div class="column">\
+    <h3>Will you marry a person you...</h3>\
+    <div class="ui input focus"><input type = "text" id = "spouse1" placeholder = "really like?"></div>\
+    <div class="ui input focus"><input type = "text" id = "spouse2" placeholder = "really like?"></div>\
+    <div class="ui input focus"><input type = "text" id = "spouse3" placeholder = "think is ok?"></div>\
+    <div class="ui input focus"><input type = "text" id = "spouse4" placeholder = "don\'t want to marry?!"></div>\
+    </div>\
+    <div class="column">\
+    <h3>How many kids?</h3>\
+    <div class="ui input focus"><input type = "number" id = "kids1" placeholder = "1?"></div>\
+    <div class="ui input focus"><input type = "number" id = "kids2" placeholder = "2?"></div>\
+    <div class="ui input focus"><input type = "number" id = "kids3" placeholder = "10?"></div>\
+    <div class="ui input focus"><input type = "number" id = "kids4" placeholder = "more?"></div>\
+    </div>\
+    <div class="column">\
+    <h3>What Will Your Ride Be?</h3>\
+    <div class="ui input focus"><input type = "text" id = "vehicle1" placeholder = "bike"></div>\
+    <div class="ui input focus"><input type = "text" id = "vehicle2" placeholder = "hoverboard"></div>\
+    <div class="ui input focus"><input type = "text" id = "vehicle3" placeholder = "sports car"></div>\
+    <div class="ui input focus"><input type = "text" id = "vehicle4" placeholder = "golfcart"></div>\
+    </div></div>\
+    <div id="game" class="ui pink button" type="submit">Let\'s go!</div>\
+    </form>');
   });
 });
+
+function partySave(event){
+  event.preventDefault();
+  var new_party_name = $('#partyName').val();
+  $.ajax("/parties",
+  {
+    type: 'post',
+    data: {
+      party: {
+        title: new_party_name,
+      }
+    }
+  }).done(function(data) {
+    $('#partyName').val('');
+    var new_party = '<div data-id="' + data.id + '" class="item">\
+    <div class="header">' + data.title + '</div>\
+    </div>';
+    $('#partylist').append(new_party);
+    $('.input').remove();
+    $('#saveParty').remove();
+
+  });
+}
