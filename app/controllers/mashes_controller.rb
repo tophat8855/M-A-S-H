@@ -24,6 +24,11 @@ class MashesController < ApplicationController
     render json: @mash
   end
 
+  def mail_test
+    ModelMailer.send_mash_game(@mash).deliver
+    render text: "did it"
+  end
+
   private
   def mash_params
     params.require(:mash).permit(:home, :spouse, :kids, :vehicle, :guest)

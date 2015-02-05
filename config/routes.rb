@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post 'sign-in' => 'authentication#create'
   get 'sign-out' => 'authentication#destroy', as: :signout
 
+  get "/mail_test" => "mashes#mail_test"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

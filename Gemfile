@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'semantic-ui-sass', '~> 1.8.1.0'
 
+# gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
