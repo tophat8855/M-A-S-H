@@ -12,6 +12,7 @@ class MashesController < ApplicationController
     # @mash = Mash.new(mash_params)
     # @mash.user_id = current_user.id
     if @mash.save
+      # flash[:success] = "Mash Successfully Saved"
       render json: @mash
     else
       render json: @mash.errors, status: :unprocessable_entity
@@ -24,8 +25,12 @@ class MashesController < ApplicationController
     render json: @mash
   end
 
-  def mail_test
-    ModelMailer.send_mash_game(@mash, "hrfarley@gmail.com").deliver
+  def mail
+    ModelMailer.send_mash_game(params[:mash], params[:email]).deliver
+    puts "*" * 80
+    puts params[:mash]
+    puts params[:email]
+    puts "*" * 80
     render text: "did it"
   end
 

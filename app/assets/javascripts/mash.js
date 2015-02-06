@@ -65,6 +65,10 @@ $(document).ready(function() {
     $("#results").remove();
     $(".save").remove();
     $('#new_mash')[0].reset();
+    $('#email').remove();
+    $('#send').remove();
+    $('#emailInput').remove();
+    $('.mail').remove();
   });
 
   //create email input box and send button
@@ -76,10 +80,12 @@ $(document).ready(function() {
     ');
   });
 
+  //send that email, baby!
   $('body').on('click', '#send', function(event) {
     event.preventDefault();
     var emailAddress = $('#emailInput').val();
-    $.ajax('/mail_test',
+    console.log(emailAddress);
+    $.ajax('/mail',
     {
       type: 'post',
       data: {
@@ -115,6 +121,9 @@ $(document).ready(function() {
       $("#results").remove();
       $(".save").remove();
       $('#new_mash')[0].reset();
+      $('#email').remove();
+      $('#send').remove();
+      $('#emailInput').remove();
     });
   });
 
@@ -197,6 +206,5 @@ function partySave(event){
     $('#partylist').append(new_party);
     $('.input').remove();
     $('#saveParty').remove();
-
   });
 }

@@ -1,5 +1,5 @@
 class ModelMailer < ActionMailer::Base
-  default from: "from@sandboxcd978ea0f42447eb9b9921a5e921c9b7.mailgun.org"
+  default from: "mash@mash.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,7 +8,9 @@ class ModelMailer < ActionMailer::Base
   #
 
   def send_mash_game(game, email)
+    @greeting = "Hiya"
+    @email = email
     @game = game
-    mail to: email, subject: "Success! You did it."
+    mail to: @email, subject: "Your MASH Game"
   end
 end

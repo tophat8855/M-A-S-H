@@ -2,13 +2,9 @@
 
 <% @mashes.each do |game| %>
 <p>
-  NEW GAME!
-  <%= game.guest %>
-  <%= game.home %>
-  <%= game.spouse %>
-  <%= game.kids %>
-  <%= game.vehicle %>
-  <%= game.created_at %>
+  <%= game.created_at.strftime ("Saved at %m/%d/%Y")%>
+  <%= game.guest %>, you will marry <%= game.spouse %> and live in a fabulous <%= game.home %>! Have fun cruising the town in your <%= game.vehicle %> with <%= game.kids %>kids!
+
   <i id="nomash" data-id = "<%= game.id %>" class="remove circle icon"></i>
 </p>
 
