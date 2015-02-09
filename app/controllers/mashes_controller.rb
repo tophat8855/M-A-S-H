@@ -27,10 +27,6 @@ class MashesController < ApplicationController
 
   def mail
     ModelMailer.send_mash_game(params[:mash], params[:email]).deliver
-    puts "*" * 80
-    puts params[:mash]
-    puts params[:email]
-    puts "*" * 80
     render text: "did it"
   end
 
