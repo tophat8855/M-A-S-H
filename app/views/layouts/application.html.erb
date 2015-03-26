@@ -5,6 +5,18 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  </script>
+
+  <script id="buttons" type="text/x-handlebars-template">
+    <div id="results"> Something here</div>
+    <div class="ui buttons save">
+    <div id="again" class="ui button">Start Over</div>
+    <div class="or"></div>
+    <div id="save" class="ui positive button">Save</div>
+    <div class="or"></div>
+    <div id="email" class="ui positive button">Email my MASH</div>
+  </script>
+
 </head>
 <body>
   <nav class="ui secondary  menu">
@@ -19,7 +31,7 @@
       <a class="item" href="/parties/">
         <i class="calendar outline icon"></i> My Parties </div>
       </a>
-    
+
       <div class="right menu">
         <a class="ui item" href="/sign-out">Sign Out</a>
     <% else %>

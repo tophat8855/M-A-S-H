@@ -50,13 +50,17 @@ $(document).ready(function() {
 
     var results = '<p>' + guestName + ', you will marry ' + newSpouse + ' and live in a fabulous ' + newHome + '! Have fun cruising the town in your ' + newVehicle + ' with ' + newKids + ' kids!</p>';
     if( $('#results').length === 0){
-      $('body').append('<div id="results">' + results + '</div><div class="ui buttons save">\
-      <div id="again" class="ui button">Start Over</div>\
-      <div class="or"></div>\
-      <div id="save" class="ui positive button">Save</div>\
-      <div class="or"></div>\
-      <div id="email" class="ui positive button">Email my MASH</div>\
-      </div>');
+      var button_source = $('#buttons').html();
+      var button_template = Handlebars.compile(button_source);
+      //var button_html = button_template({results: "something something"});
+      $('body').append(button_template());
+      // $('body').append('<div id="results">' + results + '</div><div class="ui buttons save">\
+      // <div id="again" class="ui button">Start Over</div>\
+      // <div class="or"></div>\
+      // <div id="save" class="ui positive button">Save</div>\
+      // <div class="or"></div>\
+      // <div id="email" class="ui positive button">Email my MASH</div>\
+      // </div>');
     }
   });
 
